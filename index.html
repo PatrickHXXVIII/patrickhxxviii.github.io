@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+<style>
+table, th, td 
+{   border: 0px solid black;
+    border-collapse: collapse;}
+</style>
+</head>
+<body bgcolor=8E2536>
+    <table width=25% align="center" bgcolor=F5E317>
+        <tr bgcolor=8E2536><th><img src="https://www.boone.kyschools.us/userfiles/-18/My%20Files/logo/05.png" ></th></tr>
+        <tr><th>Gudidance Sign-Up</th></tr>
+        
+        <tr><td><a style="color:red">*</a><b>First Name:<br>
+            <input type="text" name="fname" id="fname">
+        </b></td></tr>
+        
+        <tr><td><a style="color:red">*</a><b>Last Name:<br>
+            <input type="text" name="lname" id="lname">
+        </b></td></tr>
+        
+        <tr><td><a style="color:red">*</a><b>E-Mail:<br>
+            <input type="text" name="email" id="email">
+        </b></td></tr>
+        
+        <tr><td><a style="color:red">*</a><b>Reason of Visit:<br>
+        <select id=reason><option value="PLEASESELECT">PLEASE SELECT</option><option value="Academic">Academic</option><option value="College">College</option><option value="Personal">Personal</option><option value="Scheduling">Scheduling</option><option value="Other">Other</option></select>
+        </b></td></tr>
+        
+        <tr><td><a style="color:#F5E317">||</a><b>Additional Info:<br>
+            <input type="text" name="info" id="info">
+        </td></tr>
+        
+        <tr><td align="right" style="color:red">*Required Field<br>
+            <button onclick="fillBoxes()" id="submit">Submit</button>
+        </td></tr>
+    </table>
+    
+    <form action="" method="post" style="display:none"; id="form">
+    <input type="text" name="value1" id="value1"><input type="text" name="value2" id="value2"><input type="text" name="value3" id="value3">
+    <input type="submit" id="sendRequest">
+    </form> 
+</body>
+
+<script>
+var run = true;
+function fillBoxes()
+{   getName();
+    getMail();
+    getReas();
+    setCoun();
+    runTest();
+    if(run == false)
+    {   alert("Please fill in all required fields ");}
+    else
+    {   document.getElementById("sendRequest").click();}
+}
+function getName()
+{   document.getElementById("value1").value=document.getElementById("fname").value.concat(" ",document.getElementById("lname").value);}
+function getMail()
+{   document.getElementById("value2").value=document.getElementById("email").value;}
+function getReas()
+{   document.getElementById("value3").value=document.getElementById("reason").value.concat(" - ",document.getElementById("info").value);}
+
+function runTest()
+{   run=true;
+    if(document.getElementById("fname").value == "")
+    {   run=false;}
+    if(document.getElementById("lname").value == "")
+    {   run=false;}
+    if(document.getElementById("value2").value.indexOf("@") < 1)
+    {   run=false;}
+    if(document.getElementById("reason").value == "PLEASESELECT")
+    {   run=false;}    
+}
+function setCoun()
+{   var val = document.getElementById("lname").value.toUpperCase().charCodeAt(0);
+    var cou = "ALL";
+    var url = "https://maker.ifttt.com/trigger/CooperPBPGuidance_"
+    if(val >= 65) {if(val <= 71) {cou="AG";}}
+    if(val >= 72) {if(val <= 79) {cou="HO";}}
+    if(val >= 80) {if(val <= 90) {cou="PZ";}}
+    document.getElementById("form").action=url.concat(cou,"/with/key/jU2eAGJ6XB-KbFkNGKORopNPu2gzGl_X-vyP1k_Q-k3");
+    
+}
+function pushBut()
+{   document.getElementById("sendRequest").click();}
+</script>
