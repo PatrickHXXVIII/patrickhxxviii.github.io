@@ -44,6 +44,7 @@ table, th, td
 
 <script>
 var run = true;
+var vMail= true;
 function fillBoxes()
 {   getName();
     getMail();
@@ -52,6 +53,8 @@ function fillBoxes()
     runTest();
     if(run == false)
     {   alert("Please fill in all required fields ");}
+    else if(vMail==false){
+        alert("Please Use A Valid E-mail Address");}
     else
     {   document.getElementById("sendRequest").click();}
 }
@@ -64,12 +67,13 @@ function getReas()
 
 function runTest()
 {   run=true;
+    vMail=true;
     if(document.getElementById("fname").value == "")
     {   run=false;}
     if(document.getElementById("lname").value == "")
     {   run=false;}
     if(document.getElementById("value2").value.indexOf("@") < 1)
-    {   run=false;}
+    {   vMail=false;}
     if(document.getElementById("reason").value == "PLEASESELECT")
     {   run=false;}    
 }
