@@ -55,13 +55,13 @@ function fillBoxes()
     setCoun();
     runTest();
     if(run == false)
-    {   alert("Please fill in all required fields ");}
-    else if(vMail==false){
-        alert("Please Use A Valid E-mail Address");}
+    {   alert("Please fill in all required fields ");
     else if(fName ==false){
         alert("Please Enter A First Name");}
     else if(lName ==false){
         alert("Please Enter A Last Name");}
+     else if(vMail==false){
+        alert("Please Use A Valid E-mail Address");}
     else if(reason ==false){
         alert("Please Select A Reason For Vist");}
     else
@@ -75,8 +75,7 @@ function getReas()
 {   document.getElementById("value3").value=document.getElementById("reason").value.concat(" - ",document.getElementById("info").value);}
 
 function runTest()
-{   run=true;
-    vMail=true;
+{   run=true; vMail=true; fName=true; lname=true; reason=true;
     if(document.getElementById("fname").value == "")
     {   fName=false;}
     if(document.getElementById("lname").value == "")
