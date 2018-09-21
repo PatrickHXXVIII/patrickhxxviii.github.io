@@ -45,6 +45,9 @@ table, th, td
 <script>
 var run = true;
 var vMail= true;
+var fName = true;
+var lName  = true;
+var reason = true;
 function fillBoxes()
 {   getName();
     getMail();
@@ -55,6 +58,12 @@ function fillBoxes()
     {   alert("Please fill in all required fields ");}
     else if(vMail==false){
         alert("Please Use A Valid E-mail Address");}
+    else if(fName ==false){
+        alert("Please Enter A First Name");}
+    else if(lName ==false){
+        alert("Please Enter A Last Name");}
+    else if(reason ==false){
+        alert("Please Select A Reason For Vist");}
     else
     {   document.getElementById("sendRequest").click();}
 }
@@ -69,13 +78,13 @@ function runTest()
 {   run=true;
     vMail=true;
     if(document.getElementById("fname").value == "")
-    {   run=false;}
+    {   fName=false;}
     if(document.getElementById("lname").value == "")
-    {   run=false;}
+    {   lName=false;}
     if(document.getElementById("value2").value.indexOf("@") < 1)
     {   vMail=false;}
     if(document.getElementById("reason").value == "PLEASESELECT")
-    {   run=false;}    
+    {   reason=false;}    
 }
 function setCoun()
 {   var val = document.getElementById("lname").value.toUpperCase().charCodeAt(0);
