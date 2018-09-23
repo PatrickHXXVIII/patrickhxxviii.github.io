@@ -46,7 +46,7 @@ table, th, td
 var run = true;
 var vMail= true;
 var fName = true;
-var lName  = true;
+var sName  = true;
 var reason = true;
 function fillBoxes()
 {   getName();
@@ -58,7 +58,7 @@ function fillBoxes()
     {   alert("Please fill in all required fields ");}
     else if(fName ==false){
         alert("Please Enter A First Name");}
-    else if(lName ==false){
+    else if(sName ==false){
         alert("Please Enter A Last Name");}
      else if(vMail==false){
         alert("Please Use A Valid E-mail Address");}
@@ -75,11 +75,11 @@ function getReas()
 {   document.getElementById("value3").value=document.getElementById("reason").value.concat(" - ",document.getElementById("info").value);}
 
 function runTest()
-{   run=true; vMail=true; fName=true; lname=true; reason=true;
+{   run=true; vMail=true; fName=true; sname=true; reason=true;
     if(document.getElementById("fname").value == "")
     {   fName=false;}
     if(document.getElementById("lname").value == "")
-    {   lName=false;}
+    {   sName=false;}
     if(document.getElementById("value2").value.indexOf("@") < 1)
     {   vMail=false;}
     if(document.getElementById("reason").value == "PLEASESELECT")
