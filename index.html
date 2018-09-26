@@ -2,16 +2,16 @@
 <head>
 <style>
 table, th, td 
-{   border: 0px solid black;
+{   border: 0px solid #f5e317;
     border-collapse: collapse;}
 </style>
 </head>
-<body style= "background-image: linear-gradient(90deg,#8e2356, #f5e317);">
+<body style= "background-image: linear-gradient(90deg,#f5e317,#8e2356,#f5e317,#8e2356,#f5e317);background-repeat: repeat; background-size:auto;">
     <table style = "border-radius: 25px;
     background: #f5e317;
     padding: 20px; 
    "width=25% align="center" bgcolor=F5E317>
-        <tr bgcolor=8E2536><th><img src="https://www.boone.kyschools.us/userfiles/-18/My%20Files/logo/05.png" ></th></tr>
+        <tr ><th><img  src="https://www.boone.kyschools.us/userfiles/-18/My%20Files/logo/05.png" ></th></tr>
         <tr><th>Gudidance Sign-Up</th></tr>
         
         <tr><td><a style="color:red">*</a><b>First Name:<br>
@@ -35,7 +35,7 @@ table, th, td
         </td></tr>
         
         <tr><td align="right" style="color:red">*Required Field<br>
-            <button onclick="fillBoxes()" id="submit">Submit</button>
+            <button style = "  display: block; margin-left: auto; margin-right: auto;border-radius:10px;" onclick="fillBoxes()" id="submit">Submit</button>
         </td></tr>
     </table>
     
@@ -44,6 +44,7 @@ table, th, td
     <input type="submit" id="sendRequest">
     </form> 
 </body>
+
 
 <script>
 var run = true;
