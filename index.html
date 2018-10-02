@@ -34,9 +34,9 @@ table, th, td
             &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="info" id="info" style="width: 156px;">
         </td></tr>
         
-        <tr><td align="right" style="color:red">*Required Field&nbsp&nbsp&nbsp<br/><br/>
-            <button style = " box-shadow:0 15px 60px 0  rgb(53,53,53); display: block; margin-left: auto; margin-right: auto;border-radius:10px;" onclick="fillBoxes()" id="submit">Submit</button><br/>
-        </td></tr>
+        <tr><td align="right" style="color:red">*Required Field&nbsp&nbsp&nbsp<br/></td></tr>
+        <tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" id="urgent">URGENT<br><br></td></tr>
+        <tr><td><button style = " box-shadow:0 15px 60px 0  rgb(53,53,53); display: block; margin-left: auto; margin-right: auto;border-radius:10px;" onclick="fillBoxes()" id="submit">Submit</button><br></td></tr>
     </table>
     
     <form action="" method="post" style="display:none"; id="form">
@@ -52,11 +52,12 @@ var vMail= true;
 var fName = true;
 var sName  = true;
 var reason = true;
+var request = "";
 function fillBoxes()
-{   getName();
+{ getName();
     getMail();
     getReas();
-    setCoun();
+    isUrgnt();
     runTest();
     if(run == false)
     {   alert("Please fill in all required fields ");}
@@ -88,16 +89,16 @@ function runTest()
     if(document.getElementById("reason").value == "PLEASESELECT")
     {   reason=false;}    
 }
-function setCoun()
-{   var val = document.getElementById("lname").value.toUpperCase().charCodeAt(0);
-    var cou = "ALL";
-    var url = "https://maker.ifttt.com/trigger/CooperPBPGuidance_"
-    if(val >= 65) {if(val <= 71) {cou="AG";}}
-    if(val >= 72) {if(val <= 79) {cou="HO";}}
-    if(val >= 80) {if(val <= 90) {cou="PZ";}}
-    document.getElementById("form").action=url.concat(cou,"/with/key/jU2eAGJ6XB-KbFkNGKORopNPu2gzGl_X-vyP1k_Q-k3");
-    
-}
+function isUrgnt()
+{ var cou = "";
+  request = "https://maker.ifttt.com/trigger/CooperPBPGuidance_"
+  if(document.getElementById("urgent").checked == false)
+  { cou = "ALL";}
+  else
+  { cou = "URG"}
+  request=request.concat(cou,"/with/key/jU2eAGJ6XB-KbFkNGKORopNPu2gzGl_X-vyP1k_Q-k3");
+ document.getElementById("form").action=request;}
+
 function pushBut()
 {   document.getElementById("sendRequest").click();}
 </script>
