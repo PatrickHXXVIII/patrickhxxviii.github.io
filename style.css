@@ -1,0 +1,6 @@
+a			{color:390001; text-decoration: none;}
+answer		{font-size: 20px; line-height: 1;}
+body		{background-color: #f5e317; background-image: linear-gradient(180deg,#441320, #8a585f);background-repeat: no-repeat; font-family: Sans-serif;}
+bodytitle	{display: block; font-size: 1.5em; margin-top: 1.28em; margin-bottom: 0.28em; font-weight: bold;}
+question	{font-size: 30px; font-weight: bold;}
+th			{border: 2px solid #b3800b; background-image: linear-gradient(180deg,#f5e317, #E0C906); color:#fff}
