@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+<style> 
+table, th, td 
+{   border: 0px solid #f5e317;
+    border-collapse: collapse;}
+</style>
+</head>
+<body style="background:radial-gradient( circle, #c5b307,#8e2356) center fixed; background-size:cover;"><br><br>
+    <table style = "box-shadow: 10px 10px 5px rgb(53,53,53,0.5); ; border-radius: 25px;
+    background: #f5e317;
+    padding: 20px; 
+   "width=200px align="center" bgcolor=F5E317>
+        <tr ><th><br/><img  src="https://www.boone.kyschools.us/userfiles/-18/My%20Files/logo/05.png" ></th></tr>
+        <tr><th>Gudidance Sign-Up</th></tr>
+        
+        <tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp<a style="color:red">*</a><b>First Name:<br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="fname" id="fname" style="width: 156px;">
+        </b></td></tr>
+        
+        <tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp<a style="color:red">*</a><b>Last Name:<br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="lname" id="lname" style="width: 156px;">
+        </b></td></tr>
+        
+        <tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp<a style="color:red">*</a><b>E-Mail:<br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="email" id="email" style="width: 156px;">
+        </b></td></tr>
+        
+        <tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp<a style="color:red">*</a><b>Reason of Visit:<br>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<select id=reason style="width: 156px;"><option value="PLEASESELECT">PLEASE SELECT</option><option value="Academic">Academic</option><option value="College">College</option><option value="Personal">Personal</option><option value="Scheduling">Scheduling</option><option value="Other">Other</option></select>
+        </b></td></tr>
+        
+        <tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp<a style="color:#F5E317">||</a><b>Additional Info:<br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="info" id="info" style="width: 156px;">
+        </td></tr>
+        
+        <tr><td align="right" style="color:red">*Required Field&nbsp&nbsp&nbsp<br/></td></tr>
+        <tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" id="urgent">URGENT<br><br></td></tr>
+        <tr><td><button style = " box-shadow:0 15px 60px 0  rgb(53,53,53); display: block; margin-left: auto; margin-right: auto;border-radius:10px;" onclick="fillBoxes()" id="submit">Submit</button><br></td></tr>
+    </table>
+	<iframe src="https://boone.instructure.com/" id="theFrame" style="display:none"></iframe>
+
+</body>
+
+
+<script>
+var vMail= true;
+var fName = true;
+var sName  = true;
+var reason = true;
+var request = "";
+var v1 = "";
+var v2 = "";
+var v3 = "";
+function fillBoxes(){
+	getName();
+	getMail();
+	getReas();
+	isUrgnt();
+	runTest();
+	if(run == false)
+	{	alert("Please fill in all required fields ");}
+	else if(fName ==false){
+		alert("Please Enter A First Name");}
+	else if(sName ==false){
+		alert("Please Enter A Last Name");}
+	else if(vMail==false){
+		alert("Please Use A Valid E-mail Address");}
+	else if(reason ==false){
+		alert("Please Select A Reason For Vist");}
+	else
+	{	pushBut();}
+}
+function getName()	{   v1=document.getElementById("lname").value.concat(" ",document.getElementById("fname").value);}
+function getMail()	{   v2=document.getElementById("email").value;}
+function getReas()	{   v3=document.getElementById("reason").value.concat(" - ",document.getElementById("info").value);}
+function runTest()	{
+	run=true; vMail=true; fName=true; sName=true; reason=true;
+	if(document.getElementById("fname").value == "")
+	{   fName=false;}
+	if(document.getElementById("lname").value == "")
+	{   sName=false;}
+	if(v2.indexOf("@") < 1)
+	{   vMail=false;}
+	if(document.getElementById("reason").value == "PLEASESELECT")
+	{   reason=false;}}
+function isUrgnt()	{
+	var cou = "";
+	request = "https://maker.ifttt.com/trigger/guidanceSignIn_"
+	if(document.getElementById("urgent").checked == false)
+	{ cou = "ALL";}
+	else
+	{ cou = "URG"}
+	request=request.concat(cou,"/with/key/dGSJcG68O7QXMAIblitLoITVr7rClpZZ2Q2OVJJpFBB");}
+function pushBut()	{
+	document.getElementById("theFrame").src=request.concat("?value1=",v1,"&value2=",v2,"&value3=",v3);}
+</script>
